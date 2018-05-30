@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+<odoo>
+<!-- Copyright 2018 Open Source Integrators
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+    <menuitem id="menu_connectors"
+        parent="base.menu_custom"
+        name="Connectors"
+        sequence="90"/>
+</odoo>

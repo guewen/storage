@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+<!-- Copyright 2018 Open Source Integrators
+     License AGPL-3.0 or later (http://www.gnu.org/licenses/agpl). -->
+
+    <record id="view_file_backend_form" model="ir.ui.view">
+        <field name="name">file.backend.form</field>
+        <field name="model">file.backend</field>
+        <field name="arch" type="xml">
+            <form string="File Backend">
+                <header>
+                  <button name="sftp_connnection_test"
+                    type="object"
+                    class="oe_highlight"
+                    string="Test Connection"/>
+                </header>
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="storage_backend_id"/>
+                    </group>
+                </sheet>
+                <div class="oe_chatter">
+                    <field name="message_follower_ids" widget="mail_followers" groups="base.group_user"/>
+                    <field name="message_ids" widget="mail_thread"/>
+                </div>
+            </form>
+        </field>
+    </record>
+
+    <record id="view_file_backend_tree" model="ir.ui.view">
+        <field name="name">file.backend.tree</field>
+        <field name="model">file.backend</field>
+        <field name="arch" type="xml">
+            <tree string="File Backend">
+                <field name="name"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_file_backend" model="ir.actions.act_window">
+        <field name="name">File Backends</field>
+        <field name="res_model">file.backend</field>
+        <field name="view_type">form</field>
+        <field name="view_mode">tree,form</field>
+        <field name="view_id" ref="view_file_backend_tree"/>
+    </record>
+
+    <menuitem id="menu_connectors"
+              parent="base.menu_custom"
+              name="Connectors"
+              sequence="90"/>
+
+    <menuitem id="menu_file_backend"
+              parent="menu_connectors"
+              sequence="20"
+              action="action_file_backend"/>
+</odoo>
